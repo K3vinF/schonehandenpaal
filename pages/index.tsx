@@ -52,8 +52,8 @@ export default function Home() {
         </Flex>
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2463.923286333446!2d4.232245752084813!3d51.862357079595434!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c44c203cf6aaab%3A0x9efd269d3b9b4a7c!2sVuilvrij.nl!5e0!3m2!1sen!2snl!4v1594326260758!5m2!1sen!2snl"
-          width="100%" height="450" frameBorder="0" allowFullScreen="" aria-hidden="false"
-          tabIndex="0"></iframe>
+          width="100%" height="450" frameBorder="0" allowFullScreen={false} aria-hidden={false}
+          tabIndex={0} />
       </main>
 
       <Footer />
