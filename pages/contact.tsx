@@ -1,23 +1,19 @@
 import Head from 'next/head'
 
-import Nav from '@components/Nav'
-import Header from '@components/Header'
-import Footer from '@components/Footer'
+import Nav from '../components/Nav'
+import Footer from '../components/Footer'
+import ContactForm from '../components/ContactForm'
 
-export default function Item({ title, description, image }) {
+export default function Contact() {
   return (
     <div className="container">
       <Head>
-        <title>My Portfolio | {title}</title>
+        <title>Schonehandenpaal.nl | Contact</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <Nav />
-
       <main>
-        <Header text={title} />
-        <p>{description}</p>
-        <img src={image} />
+        <ContactForm />
       </main>
 
       <Footer />
@@ -57,35 +53,4 @@ export default function Item({ title, description, image }) {
       `}</style>
     </div>
   )
-}
-
-export async function getStaticProps({ ...ctx }) {
-  const portfolioData = await import(`../../portfolio.json`)
-
-  let currentItem = portfolioData.items.filter((i) => {
-    return i.slug === ctx.params.item
-  })
-
-  let { title, description, image } = currentItem[0]
-
-  return {
-    props: {
-      title,
-      description,
-      image,
-    },
-  }
-}
-
-export async function getStaticPaths() {
-  const portfolioData = await import(`../../portfolio.json`)
-  let slugs = portfolioData.items.map((i) => i.slug)
-  let paths = slugs.map((slug) => {
-    return { params: { item: slug } }
-  })
-
-  return {
-    paths,
-    fallback: false,
-  }
 }
