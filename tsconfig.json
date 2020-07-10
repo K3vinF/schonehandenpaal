@@ -25,5 +25,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ]
+  ],
+  "paths": {
+    "@/components/*": ["components/*"]
+  }
 }
