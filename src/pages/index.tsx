@@ -19,6 +19,9 @@ const StyledPrice = styled.div`
 const StyledMainImage = styled.img`
   max-height: 800px;
 `;
+const StyledImageBox = styled(Box)`
+ text-align: end;
+`;
 
 const StyledHeader = styled(Box)`
   line-height: 1;
@@ -80,9 +83,9 @@ export default function Home(props: any) {
             px={3}
             py={4}
             flexWrap={'wrap'}>
-            <Box width={[1,1/2]} p={[2,3]} textAlign={'end'}>
+            <StyledImageBox width={[1,1/2]} p={[2,3]}>
               <StyledMainImage src={'/images/schone-handen-paal.jpg'} alt={'Desinfectiegel handflacon op paal'} />
-            </Box>
+            </StyledImageBox>
             <Box width={[1, 1/2]} p={[2,3]}>
               <Heading
                 fontSize={[ 4, 5 ]}
