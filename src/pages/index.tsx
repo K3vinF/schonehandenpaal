@@ -4,9 +4,10 @@ import Footer from '../components/Footer'
 import { Box, Flex, Heading } from "rebass/styled-components";
 import { theme } from '../assets/theme';
 import ContactForm from "../components/ContactForm";
-import styled from "styled-components";
+import styled, {ThemeProvider} from "styled-components";
 import { FiSmartphone, FiMail } from "react-icons/fi";
 import ReactGA from 'react-ga';
+import React from "react";
 
 const StyledPrice = styled.div`
   margin-top: 1em;
@@ -46,6 +47,7 @@ export default function Home(props: any) {
   }
 
   return (
+    <ThemeProvider theme={ theme }>
     <div className="container">
       <Head>
         <title key='title'>Schonehandenpaal.nl</title>
@@ -165,6 +167,7 @@ export default function Home(props: any) {
         </main>
       <Footer />
     </div>
+    </ThemeProvider>
   )
 }
 

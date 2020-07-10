@@ -1,5 +1,7 @@
 import { Button } from "rebass/styled-components";
-import styled from "styled-components";
+import styled, {ThemeProvider} from "styled-components";
+import { theme } from "../assets/theme";
+import React from "react";
 
 const StyledForm = styled.form`
   label {
@@ -23,9 +25,9 @@ const StyledForm = styled.form`
     outline: 1px dotted #d6d6d6;
   }
 `
-
 export default function ContactForm() {
   return (
+    <ThemeProvider theme={ theme }>
     <StyledForm name="contact" action="/success" method="POST" data-netlify="true">
       <input type="hidden" name="form-name" value="contact" />
       <p>
@@ -47,5 +49,6 @@ export default function ContactForm() {
 
       `}</style>
     </StyledForm>
+    </ThemeProvider>
   )
 }
