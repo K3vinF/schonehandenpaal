@@ -4,7 +4,6 @@ import Footer from '../components/Footer'
 import { Box, Flex, Heading } from "rebass/styled-components";
 import { theme } from '../assets/theme';
 import ContactForm from "../components/ContactForm";
-import { GlobalStyle } from "../assets/globalStyling";
 import styled from "styled-components";
 import { FiSmartphone, FiMail } from "react-icons/fi";
 import ReactGA from 'react-ga';
@@ -64,7 +63,6 @@ export default function Home(props: any) {
            content="{ og_image }"/>
       </Head>
         <main>
-          <GlobalStyle />
           <Flex
             p = {[2,3]} backgroundColor={ theme.colors.blue }
             alignItems='center'
