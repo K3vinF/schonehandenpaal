@@ -10,7 +10,6 @@ import ReactGA from 'react-ga';
 import React from "react";
 
 const StyledPrice = styled.div`
-  margin-top: 1em;
   font-size:${props => props.theme.fontSizes['6']}px;
   font-weight: bold;
   color: ${props => props.theme.colors.primary};
@@ -38,9 +37,37 @@ const StyledHeader = styled(Box)`
   }
 `;
 
-const og_image = 'https:///schonehandenpaal.nl/images/schone-handen-paal-klein-vierkant.jpg'
+
 
 export default function Home(props: any) {
+  const og_image = props.hostname + '/images/schone-handen-paal-klein-vierkant.jpg';
+  const description = `Hygiënepaal met voetbedieningHandhygiëne, geschikt voor de meeste handflacons.`
+
+  const jsonld = {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "Hygiënepaal met voetbediening",
+    "image": [
+      props.hostname + '/images/schone-handen-paal-persoon-vierkant.jpg',
+      props.hostname + '/images/schonehandenpaal-fles-wit.jpg',
+      props.hostname + '/images/schonehandenpaal-voet-wit.jpg',
+    ],
+    "description": description,
+    "sku": "SCHONEHANDENPAAL1",
+    "mpn": "925872",
+    "brand": {
+      "@type": "Brand",
+      "name": "Schonehandenpaal.nl"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": props.hostname,
+      "price": "79.00",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+    }
+  }
+
   if (process.browser) {
     ReactGA.initialize('UA-171799610-1');
     ReactGA.pageview(window.location.pathname + window.location.search);
@@ -52,17 +79,23 @@ export default function Home(props: any) {
       <Head>
         <title key='title'>Schonehandenpaal.nl</title>
         <link key='favicon' rel="icon" href="/favicon.ico" />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,700;0,900;1,400&display=swap" rel="stylesheet" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <meta name="robots" content="index, follow, archive" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Schone Handen Paal | schonehandenpaal.nl" />
         <meta property="og:site_name" content="schonehandenpaal.nl" />
         <meta property="og:description"
-           content="Hygiënepaal met voetbedieningHandhygiëne door voetbedieningStevige metalen paal Degelijke constructieGeschikt voor de meeste handflacons Exclusief handflacon . € 79.-. excl.. BTW Verzendkosten € 6,95 of afhalen in Heenvliet." />
+           content={ description } />
         <meta name="description"
-           content="Hygiënepaal met voetbedieningHandhygiëne door voetbedieningStevige metalen paal Degelijke constructieGeschikt voor de meeste handflacons Exclusief handflacon . € 79.-. excl.. BTW Verzendkosten € 6,95 of afhalen in Heenvliet." />
+           content={ description } />
         <meta property="og:image"
-           content="{ og_image }"/>
+           content={ og_image } />
+        <script
+          key={`json-ld`}
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonld) } }
+        />
       </Head>
         <main>
           <Flex
@@ -70,7 +103,7 @@ export default function Home(props: any) {
             alignItems='center'
             flexWrap={'wrap'} >
             <StyledHeader>
-              <img src={'images/schonehandenpaal.png'} />
+              <img src={ props.hostname + '/images/schonehandenpaal.png'} />
             </StyledHeader>
             <StyledHeader ml={[0, 0, 0, 'auto']} width = {[1, 1, 'auto']} mt={[2,2,0]}>
               <FiMail /> <a href={'mailto: info@schonehandenpaal.nl'}>info@schonehandenpaal.nl</a>
@@ -99,10 +132,13 @@ export default function Home(props: any) {
                 <li>Stevige metalen paal</li>
                 <li>Degelijke constructie</li>
                 <li>Geschikt voor de meeste handflacons</li>
+
                 <li>Exclusief handflacon</li>
               </ul>
 
-              <p><StyledPrice>€ 79.- </StyledPrice>excl. BTW</p>
+              <p>
+              <Heading mt={[4,5]}>Direct leverbaar uit voorraad</Heading>
+              <StyledPrice>€ 79.- </StyledPrice>excl. BTW</p>
 
               <p><em>Verzendkosten € 6,95 of afhalen in Heenvliet</em></p>
               <Heading
@@ -110,7 +146,7 @@ export default function Home(props: any) {
                 mt={[3, 4]}
                 as={'h3'}
                 color='primary'>
-                Ook leverbaar
+                Ook leverbaar:
               </Heading>
 
               <ul>
@@ -125,9 +161,9 @@ export default function Home(props: any) {
                 alignItems={'baseline'}
                 backgroundColor={ theme.colors.blue }
           >
-            <img src={'/images/schone-handen-paal-persoon-vierkant-blauw.jpg'} />
-            <img src={'/images/schonehandenpaal-fles.jpg'} />
-            <img src={'/images/schonehandenpaal-voet.jpg'} />
+            <img src={'/images/schone-handen-paal-persoon-vierkant-blauw.jpg'} alt={'Hand dispenser gemoteerd op paal'} />
+            <img src={'/images/schonehandenpaal-fles.jpg'} alt={'Handflacon gemonteerd in de desinfectiepaal'} />
+            <img src={'/images/schonehandenpaal-voet.jpg'} alt={'Hygiene door voetbediening'} />
 
           </Flex>
 
@@ -175,7 +211,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-
+      hostname: process.env.URL
     },
   }
 }

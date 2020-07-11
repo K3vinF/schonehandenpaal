@@ -35,8 +35,8 @@ export default function ContactForm() {
         <input type="text" name="name" id="yourname" />
       </p>
       <p>
-        <label htmlFor="youremail">Uw a-mail: </label>{' '}
-        <input type="email" name="email" id="youremail" />
+        <label htmlFor="contact">Uw e-mail of telefoonnummer: </label>{' '}
+        <input type="contact" name="contact" id="contact" />
       </p>
       <p>
         <label htmlFor="yourmessage">Bericht / vraag: </label>

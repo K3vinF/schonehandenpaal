@@ -16,7 +16,7 @@ export const theme =  {
     0, 4, 8, 16, 32, 64, 128, 256
   ],
   fonts: {
-    body: 'system-ui, sans-serif',
+    body: 'Montserrat, sans-serif',
     heading: 'inherit',
     monospace: 'Menlo, monospace',
   },
