@@ -4,7 +4,6 @@ import React from "react";
 export default function Admin(props: any) {
 return   <>
     <Head>
-        <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>Content Manager</title>
         <link href="netlifycms/config.yml" type="text/yaml" rel="cms-config-url" />
