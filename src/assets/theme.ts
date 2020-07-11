@@ -9,6 +9,7 @@ export const theme =  {
   colors: {
     blue: 'rgb(0, 157, 224)',
     white: '#FFFFFF',
+    green: '#009900',
     lightgray: '#f6f6ff',
     primary: 'rgb(0, 157, 224)'
   },

@@ -8,6 +8,7 @@ import styled, {ThemeProvider} from "styled-components";
 import { FiSmartphone, FiMail } from "react-icons/fi";
 import ReactGA from 'react-ga';
 import React from "react";
+import { FaTruckMoving } from "react-icons/fa";
 
 const StyledPrice = styled.div`
   font-size:${props => props.theme.fontSizes['6']}px;
@@ -16,10 +17,45 @@ const StyledPrice = styled.div`
 `;
 
 const StyledMainImage = styled.img`
-  max-height: 800px;
+  max-height: 500px;
+  @media screen and (min-width: 800px) {  
+    max-height: 800px;
+  }
 `;
 const StyledImageBox = styled(Box)`
- text-align: end;
+ text-align: center;
+ position: relative;
+`;
+
+const StyledDelivery = styled.p`
+  svg {
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+    margin-right: .5em;
+    color: ${props => props.theme.colors.green};
+  }
+`;
+
+const StyledPriceSticker = styled.div`
+  position: absolute;
+  text-align: center;
+  color: ${props => props.theme.colors.white};
+  background-color: ${props => props.theme.colors.primary};
+  border-radius: 100px;
+  padding: 4em 2em;
+  top: 30vh;
+  right: 50%;
+  transform: translateX(50%);
+  span {
+    display: block;
+  }
+  .price {
+    font-size:${props => props.theme.fontSizes['6']}px;
+    font-weight: bold;
+    line-height: 1;
+    white-space: nowrap;
+  }
 `;
 
 const StyledHeader = styled(Box)`
@@ -37,12 +73,17 @@ const StyledHeader = styled(Box)`
   }
 `;
 
-
+const formatPrice = (price:any) => {
+  if (parseInt(price) == parseFloat(price)) {
+    return parseInt(price) + ',-'
+  }
+  return price;
+}
 
 export default function Home(props: any) {
   const og_image = props.hostname + '/images/schone-handen-paal-klein-vierkant.jpg';
   const description = `Hygiënepaal met voetbedieningHandhygiëne, geschikt voor de meeste handflacons.`
-
+  const price = "79.00";
   const jsonld = {
     "@context": "https://schema.org/",
     "@type": "Product",
@@ -62,7 +103,7 @@ export default function Home(props: any) {
     "offers": {
       "@type": "Offer",
       "url": props.hostname,
-      "price": "79.00",
+      "price": price,
       "priceCurrency": "EUR",
       "availability": "https://schema.org/InStock",
     }
@@ -106,8 +147,8 @@ export default function Home(props: any) {
               <img src={ props.hostname + '/images/schonehandenpaal.png'} />
             </StyledHeader>
             <StyledHeader ml={[0, 0, 0, 'auto']} width = {[1, 1, 'auto']} mt={[2,2,0]}>
-              <FiMail /> <a href={'mailto: info@schonehandenpaal.nl'}>info@schonehandenpaal.nl</a>
               <FiSmartphone /> <a href={'tel:0031621828751'} className={'phone'}>06-218 287 51</a>
+              <FiMail /> <a href={'mailto: info@schonehandenpaal.nl'}>mail</a>
             </StyledHeader>
           </Flex>
 
@@ -118,6 +159,11 @@ export default function Home(props: any) {
             flexWrap={'wrap'}>
             <StyledImageBox width={[1,1/2]} p={[2,3]}>
               <StyledMainImage src={'/images/schone-handen-paal.jpg'} alt={'Desinfectiegel handflacon op paal'} />
+              <StyledPriceSticker>
+                <span className={'price'}>
+                € { formatPrice(price) }</span>
+                <span className={'suffix'}>excl. BTW</span>
+              </StyledPriceSticker>
             </StyledImageBox>
             <Box width={[1, 1/2]} p={[2,3]}>
               <Heading
@@ -136,9 +182,12 @@ export default function Home(props: any) {
                 <li>Exclusief handflacon</li>
               </ul>
 
-              <p>
-              <Heading mt={[4,5]}>Direct leverbaar uit voorraad</Heading>
-              <StyledPrice>€ 79.- </StyledPrice>excl. BTW</p>
+              <StyledDelivery>
+              <Heading
+                mt={[4,5]}
+                fontSize={[ 2, 3 ]}
+              ><FaTruckMoving className={'delivery'} />Direct leverbaar uit voorraad</Heading>
+              </StyledDelivery>
 
               <p><em>Verzendkosten € 6,95 of afhalen in Heenvliet</em></p>
               <Heading
