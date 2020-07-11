@@ -89,7 +89,7 @@ export const TrackClickEvent = (action: string) => {
 
 export default function Home(props: any) {
   const og_image = props.hostname + '/images/schone-handen-paal-klein-vierkant.jpg';
-  const description = `Hygiënepaal met voetbedieningHandhygiëne, geschikt voor de meeste handflacons.`
+  const description = `Hygiënepaal met voetbediening, geschikt voor de meeste handflacons.`
   const price = "79.00";
   const jsonld = {
     "@context": "https://schema.org/",
