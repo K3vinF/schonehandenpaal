@@ -2,6 +2,7 @@ import { Button } from "rebass/styled-components";
 import styled, {ThemeProvider} from "styled-components";
 import { theme } from "../assets/theme";
 import React from "react";
+import { TrackClickEvent } from "../pages";
 
 const StyledForm = styled.form`
   label {
@@ -43,7 +44,7 @@ export default function ContactForm() {
         <textarea name="message" rows={5} id="yourmessage"></textarea>
       </p>
       <p>
-        <Button variant='primary' mr={2}>Verzenden</Button>
+        <Button onClick={()=>TrackClickEvent('contact-form')} variant='primary' mr={2}>Verzenden</Button>
       </p>
       <style jsx>{`
 

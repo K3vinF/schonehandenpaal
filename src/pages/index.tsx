@@ -80,6 +80,13 @@ const formatPrice = (price:any) => {
   return price;
 }
 
+export const TrackClickEvent = (action: string) => {
+  ReactGA.event({
+    category: 'Click',
+    action: action,
+  });
+}
+
 export default function Home(props: any) {
   const og_image = props.hostname + '/images/schone-handen-paal-klein-vierkant.jpg';
   const description = `Hygiënepaal met voetbedieningHandhygiëne, geschikt voor de meeste handflacons.`
@@ -147,8 +154,8 @@ export default function Home(props: any) {
               <img src={ props.hostname + '/images/schonehandenpaal.png'} />
             </StyledHeader>
             <StyledHeader ml={[0, 0, 0, 'auto']} width = {[1, 1, 'auto']} mt={[2,2,0]}>
-              <FiSmartphone /> <a href={'tel:0031621828751'} className={'phone'}>06-218 287 51</a>
-              <FiMail /> <a href={'mailto: info@schonehandenpaal.nl'}>mail</a>
+              <FiSmartphone /> <a href={'tel:0031621828751'} onClick={()=>TrackClickEvent('phonenumber')} className={'phone'}>06-218 287 51</a>
+              <FiMail /> <a onClick={()=>TrackClickEvent('email')}  href={'mailto: info@schonehandenpaal.nl'}>mail</a>
             </StyledHeader>
           </Flex>
 
@@ -233,8 +240,8 @@ export default function Home(props: any) {
             <Box width={[1,1/2]} p={[2,3]}>
               <Heading as={'h3'}>Contact</Heading>
               <p>
-              <FiMail /> <a href={'mailto: info@schonehandenpaal.nl'}>info@schonehandenpaal.nl</a><br />
-              <FiSmartphone /> <a href={'tel:0031621828751'} className={'phone'}>06-218 287 51</a><br /></p>
+              <FiMail /> <a onClick={()=>TrackClickEvent('email')} href={'mailto: info@schonehandenpaal.nl'}>info@schonehandenpaal.nl</a><br />
+              <FiSmartphone /> <a onClick={()=>TrackClickEvent('phonenumber')} href={'tel:0031621828751'} className={'phone'}>06-218 287 51</a><br /></p>
               <p>
                 Schonehandenpaal.nl<br />
                 Polyanderweg 10 A<br />
