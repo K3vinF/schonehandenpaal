@@ -44,8 +44,8 @@ const StyledPriceSticker = styled.div`
   background-color: ${props => props.theme.colors.primary};
   border-radius: 100px;
   padding: 4em 2em;
-  top: 30vh;
-  right: 50%;
+  top: 25vh;
+  right: 66%;
   transform: translateX(50%);
   span {
     display: block;
