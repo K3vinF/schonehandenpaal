@@ -23,7 +23,7 @@ const StyledMainImage = styled.img`
   }
 `;
 const StyledImageBox = styled(Box)`
- text-align: center;
+ text-align: right;
  position: relative;
 `;
 
@@ -70,6 +70,11 @@ const StyledHeader = styled(Box)`
     text-decoration: none;
     display: inline-block;
     margin-right: 1em;
+  }
+`;
+const StyledImageRow = styled(Flex)`
+  .top {
+    align-self: flex-start;
   }
 `;
 
@@ -161,18 +166,16 @@ export default function Home(props: any) {
 
           <Flex
             alignItems='center'
-            px={3}
-            py={4}
             flexWrap={'wrap'}>
-            <StyledImageBox width={[1,1/2]} p={[2,3]}>
-              <StyledMainImage src={'/images/schone-handen-paal.jpg'} alt={'Desinfectiegel handflacon op paal'} />
+            <StyledImageBox alignSelf={'flex-start'} width={[1,1/2]} px={[2,0, 0]} ml={'auto'}>
+              <StyledMainImage  src={'/images/schonehandenpaal-voet2-wit.jpg'} alt={'Desinfectiegel handflacon op paal'} />
               <StyledPriceSticker>
                 <span className={'price'}>
                 € { formatPrice(price) }</span>
                 <span className={'suffix'}>excl. BTW</span>
               </StyledPriceSticker>
             </StyledImageBox>
-            <Box width={[1, 1/2]} p={[2,3]}>
+            <Box width={[1, 1/2]} p={[4, 5]} alignSelf={'stretch'} color={ theme.colors.white } backgroundColor={ theme.colors.black }>
               <Heading
                 fontSize={[ 4, 5 ]}
                 as={'h1'}
@@ -213,15 +216,15 @@ export default function Home(props: any) {
             </Box>
           </Flex>
 
-          <Flex px = {[2,3]}
+          <StyledImageRow px = {[2,3]}
                 alignItems={'baseline'}
                 backgroundColor={ theme.colors.blue }
           >
             <img src={'/images/schone-handen-paal-persoon-vierkant-blauw.jpg'} alt={'Hand dispenser gemoteerd op paal'} />
-            <img src={'/images/schonehandenpaal-fles.jpg'} alt={'Handflacon gemonteerd in de desinfectiepaal'} />
-            <img src={'/images/schonehandenpaal-voet.jpg'} alt={'Hygiene door voetbediening'} />
+            <img src={'/images/schonehandenpaal-fles.png'} alt={'Handflacon gemonteerd in de desinfectiepaal'} />
+            <img className={'top'} src={'/images/schonehandenpaal-voet.png'} alt={'Hygiene door voetbediening'} />
 
-          </Flex>
+          </StyledImageRow>
 
 
           <Flex

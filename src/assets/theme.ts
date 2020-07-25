@@ -7,7 +7,10 @@ export const theme =  {
     12, 14, 16, 20, 24, 32, 48, 64
   ],
   colors: {
+    black: '#000000',
+    white: '#FFFFFF',
     blue: 'rgb(0, 157, 224)',
+    blue__light: '#c6eeff',
     white: '#FFFFFF',
     green: '#009900',
     lightgray: '#f6f6ff',

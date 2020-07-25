@@ -25,12 +25,20 @@ const StyledForm = styled.form`
   textarea:focus {
     outline: 1px dotted #d6d6d6;
   }
+  .hidden {
+    display: none;
+  }
 `
 export default function ContactForm() {
   return (
     <ThemeProvider theme={ theme }>
     <StyledForm name="contact" action="/success" method="POST" data-netlify="true">
       <input type="hidden" name="form-name" value="contact" />
+
+      <p className="hidden">
+        <label>Don’t fill this out if you're human: <input name="bot-field"/></label>
+      </p>
+
       <p>
         <label htmlFor="yourname">Uw naam:</label>
         <input type="text" name="name" id="yourname" />
