@@ -94,8 +94,8 @@ export const TrackClickEvent = (action: string) => {
 
 export default function Home(props: any) {
   const og_image = props.hostname + '/images/schone-handen-paal-klein-vierkant.jpg';
-  const description = `Hygiënepaal met voetbediening, geschikt voor de meeste handflacons.`
   const price = "79.00";
+  const description = `Hygiënepaal met voetbediening, geschikt voor de meeste handflacons. € ${ formatPrice(price) } excl. BTW.`
   const jsonld = {
     "@context": "https://schema.org/",
     "@type": "Product",
@@ -168,7 +168,7 @@ export default function Home(props: any) {
             alignItems='center'
             flexWrap={'wrap'}>
             <StyledImageBox alignSelf={'flex-start'} width={[1,1/2]} px={[2,0, 0]} ml={'auto'}>
-              <StyledMainImage  src={'/images/schonehandenpaal-voet2-wit.jpg'} alt={'Desinfectiegel handflacon op paal'} />
+              <StyledMainImage  src={'/images/schonehandenpaal-voet2-wit.jpg'} alt={`Desinfectiepaal met alcoholgel handflacon, € ${ formatPrice(price) }` } />
               <StyledPriceSticker>
                 <span className={'price'}>
                 € { formatPrice(price) }</span>
