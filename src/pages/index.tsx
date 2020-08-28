@@ -9,6 +9,7 @@ import { FiSmartphone, FiMail } from "react-icons/fi";
 import ReactGA from 'react-ga';
 import React from "react";
 import { FaTruckMoving } from "react-icons/fa";
+// import { attributes, react as HomeContent } from '../content/home.md';
 
 const StyledPrice = styled.div`
   font-size:${props => props.theme.fontSizes['6']}px;
@@ -93,6 +94,7 @@ export const TrackClickEvent = (action: string) => {
 }
 
 export default function Home(props: any) {
+
   const og_image = props.hostname + '/images/schone-handen-paal-klein-vierkant.jpg';
   const price = "79.00";
   const description = `Hygiënepaal met voetbediening, geschikt voor de meeste handflacons. € ${ formatPrice(price) } excl. BTW.`
@@ -132,6 +134,8 @@ export default function Home(props: any) {
       <Head>
         <title key='title'>Schonehandenpaal.nl</title>
         <link key='favicon' rel="icon" href="/favicon.ico" />
+        <!-- include the widget -->
+        <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,700;0,900;1,400&display=swap" rel="stylesheet" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <meta name="robots" content="index, follow, archive" />
